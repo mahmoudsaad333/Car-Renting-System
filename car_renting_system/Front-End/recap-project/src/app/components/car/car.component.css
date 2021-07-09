@@ -1,0 +1,26 @@
+.col-md-4 {
+  padding-bottom: 40px;
+}
+
+button {
+  padding: 10px;
+}
+
+.circleBase {
+  border-radius: 50%;
+}
+
+.circleBase p {
+  padding-top: 9px;
+  font-weight: bold;
+  color: white;
+}
+
+.type {
+  width: 50px;
+  height: 50px;
+  background: #ffa500;
+  border: 3px solid white;
+  position: absolute;
+  right: -15px;
+}
