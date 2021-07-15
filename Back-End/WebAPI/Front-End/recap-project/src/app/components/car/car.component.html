@@ -1,0 +1,33 @@
+<h4>{{title}}</h4>
+
+<div class="form-group">
+  <input class="form-control" placeholder="Search Car" [(ngModel)]="carFilterText" />
+  <small class="form-text text-muted" *ngIf="carFilterText"> now {{ carFilterText }} </small>
+</div>
+
+<div class="row" *ngIf="carDetails.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-danger">
+      Car is not found to show.
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="dataLoaded==true">
+  <div class="col-md-4" *ngFor="let cardetail of carDetails | carFilter:carFilterText">
+    <div class="card">
+      <img [src]="this.sanitizer.bypassSecurityTrustResourceUrl(cardetail.carImage)" class="card-img-top" width="auto" height="150px">
+      <div class="card-body" style="background-color:ghostwhite;">
+        <h5 class="card-title"> <b> {{cardetail.brandName}} {{cardetail.description}} - {{cardetail.modelYear}} </b></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <b>Color:</b> {{cardetail.colorName}}</li>
+        <li class="list-group-item text-center"> <b> {{cardetail.dailyPrice | currency: "₺"}} </b> </li>
+        <li class="list-group-item text-center"> <button routerLink="/cars/cardetail/{{cardetail.carId}}" type="button" class="btn btn-info w-100">See More</button> </li>
+        <li class="list-group-item text-center"> <button (click)="addToCart(cardetail)" type="button" class="btn btn-success w-100">Add To Cart</button> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
